@@ -1,0 +1,46 @@
+@import '~antd/es/style/themes/default.less';
+
+// A4纸张预览和打印
+body {
+  margin: 0;
+  padding: 0;
+  font: 12pt serif;
+  background-color: #fafafa;
+}
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.page {
+  width: 21cm;
+  min-height: 29.7cm;
+  margin: 1cm auto;
+  padding: 2cm;
+  background: white;
+  border: 1px #d3d3d3 solid;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+  height: 237mm;
+  padding: 1cm;
+  border: 5px red solid;
+  outline: 2cm #ffeaea solid;
+}
+
+@page {
+  size: a4;
+  margin: 0;
+}
+@media print {
+  .page {
+    width: initial;
+    min-height: initial;
+    margin: 0;
+    page-break-after: always;
+    background: initial;
+    border: initial;
+    border-radius: initial;
+    box-shadow: initial;
+  }
+}

@@ -1,0 +1,75 @@
+import { GroupedColumnChart } from 'bizcharts';
+import React from 'react';
+import autoHeight from '@/components/autoHeight';
+import { FaultHistogramDataType } from '../../data';
+
+export interface ClassStatisticsProps {
+  height?: number;
+  forceFit?: boolean;
+  borderWidth?: number;
+  data: Array<object>;
+}
+
+const ClassStatistics: React.FC<ClassStatisticsProps> = (props) => {
+  const { height, data } = props;
+  const padding: [number, number, number, number] = [30, 30, 30, 30];
+  const chartHeight = "20vh";
+  // var dataSource = [{
+  //   type: "",
+  //   key: "",
+  //   value: 0,
+  // }];
+
+  // var dataLength = data.length === 0 ? 1 : data[0].keyAndValues.length;
+  // for (let i = 0; i < dataLength; i++) {
+
+  //   const dataTemp = data.map((item) => ({
+  //     type: item.type,
+  //     key: item.keyAndValues.map((itemTem) => (itemTem.key))[i],
+  //     value: item.keyAndValues.map((itemTem) => (itemTem.value))[i]
+  //   }))
+  //   for (let j = 0; j < dataTemp.length; j++) {
+  //     dataSource.push(dataTemp[j])
+  //   }
+  // }
+
+  // const dataSourceTemp = dataSource.filter(item => (item.type !== ""));
+
+  return (
+    <div>
+      <GroupedColumnChart
+        height={chartHeight}
+        data={data}
+        // title={{
+        //   visible: true,
+        //   text: '故障频次统计',
+        // }}
+        forceFit
+        padding={padding}
+        xField="type"
+        yField="value"
+        groupField="name"
+        meta={{
+          type: {
+            alias: '关键部件',
+          },
+          value: {
+            alias: '故障次数',
+          },
+        }}
+        legend={{
+          position: 'top-center',
+        }}
+        yAxis={{
+          visible: true,
+          title: {
+            text: '故障频次',
+          },
+        }}
+      />
+    </div>
+  );
+};
+
+export default autoHeight()(ClassStatistics);
+

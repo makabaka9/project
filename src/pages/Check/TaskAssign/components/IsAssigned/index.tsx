@@ -4,7 +4,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import BasicOrderInfo from '@/components/BasicOrderInfo';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import OrderWorkFlowStep from '@/components/OrderWorkFlowStep';
 import { CurrentUser } from '@/models/user';
 // import moment from 'moment';
@@ -82,7 +82,7 @@ const IsAssigned: FC<IsAssignedProps> = ({
                 <Panel key="1" header={<div style={{ color: '#1890ff' }}>查看详情</div>}>
                   <Tabs>
                     <Tabs.TabPane tab="委托单详情" key="1">
-                      <DetailPhysicalChemical data={item} />
+                      <DetailProject data={item} />
                     </Tabs.TabPane>
                     <Tabs.TabPane tab="送检进度" key="2">
                       <OrderWorkFlowStep
@@ -113,9 +113,9 @@ const IsAssigned: FC<IsAssignedProps> = ({
                 {item.taskAssign.filter(tempItem => tempItem.group === currentUser.group)[0]
                   .testAssignTime
                   ? moment(
-                      item.taskAssign.filter(tempItem => tempItem.group === currentUser.group)[0]
-                        .testAssignTime,
-                    ).format('YYYY-MM-DD HH:mm:ss')
+                    item.taskAssign.filter(tempItem => tempItem.group === currentUser.group)[0]
+                      .testAssignTime,
+                  ).format('YYYY-MM-DD HH:mm:ss')
                   : null}
               </p>
             </div>

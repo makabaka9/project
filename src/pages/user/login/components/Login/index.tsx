@@ -55,6 +55,10 @@ const Login: LoginType = (props) => {
     },
   );
   return (
+    /**使用上下文空间的提供器,将数据传递给子组件 
+     * 一个参数value={num}
+     * 多个参数value={{对象}}
+    */
     <LoginContext.Provider
       value={{
         tabUtil: {

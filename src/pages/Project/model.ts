@@ -1,8 +1,9 @@
 import { AnyAction, Reducer } from 'redux';
 import { EffectsCommandMap } from 'dva';
 import { message } from 'antd';
-import { ProjectItemDataType } from '../data.d';
-import { queryOrderList, queryRejectedOrderList, SubmitForm, removeForm, queryProject } from '../service';
+import { ProjectItemDataType } from './data.d';
+import { queryOrderList, queryRejectedOrderList, removeForm, queryProjectById, UpdateFormById } from './service';
+import { SubmitForm } from '../Submit/service';
 
 export interface StateType {
   list?: ProjectItemDataType[];
@@ -23,6 +24,7 @@ export interface ModelType {
   effects: {
     fetch: Effect;
     fetchById: Effect;
+    submitStepForm: Effect;
     appendFetch: Effect;
     fetchRejected: Effect;
     appendRejected: Effect;
@@ -30,20 +32,19 @@ export interface ModelType {
     deleteForms: Effect;
   };
   reducers: {
-    queryList: Reducer<StateType>;
+    //queryList: Reducer<StateType>;
     queryProject: Reducer<StateType>;
-    appendList: Reducer<StateType>;
-    queryRejectedList: Reducer<StateType>;
-    appendRejectedList: Reducer<StateType>;
+    saveStepFormData: Reducer<StateType>;
+    //appendList: Reducer<StateType>;
+    //queryRejectedList: Reducer<StateType>;
+    //appendRejectedList: Reducer<StateType>;
   };
 }
 
 const Model: ModelType = {
-  namespace: 'submitAndOrderList',
+  namespace: 'Project',
 
   state: {
-    list: [],
-    rejectedList: [],
     project: {
       projectBudget: "",
       projectCategory: "",
@@ -58,7 +59,7 @@ const Model: ModelType = {
       projectResearchContent: "",
       projectStartTime: "",
       projectFunds: "",
-      abnormalInstruction: ""
+      abnormalInstruction: "",
     },
   },
 
@@ -72,12 +73,25 @@ const Model: ModelType = {
     },
     *fetchById({ payload }, { call, put }) {
       console.log(payload)
-      const response = yield call(queryProject, payload);
+      const response = yield call(queryProjectById, payload);
       console.log(response)
       yield put({
         type: 'queryProject',
         payload: response,
       })
+    },
+    *submitStepForm({ payload }, { call, put }) {
+      // yield call()执行异步函数 来调用（数据接口方法 和 请求参数）yield表示同步调用
+      //const response = yield call(CurrentUser, payload);//获取登陆用户信息
+      //存储数据
+      const submitPayload = payload;
+      console.log(submitPayload)
+      const response = yield call(UpdateFormById, submitPayload);//call effect-->service-->reducer
+      yield put({//put：发出一个 Action，类似于 dispatch effect-->reducer
+        type: 'saveStepFormData',
+        payload,
+        response,
+      });
     },
     *appendFetch({ payload }, { call, put }) {
       const response = yield call(queryOrderList, payload);
@@ -110,36 +124,44 @@ const Model: ModelType = {
   },
 
   reducers: {
-    queryList(state, action) {
-      return {
-        ...state,
-        list: action.payload,
-      };
-    },
+    // queryList(state, action) {
+    //   return {
+    //     ...state,
+    //     list: action.payload,
+    //   };
+    // },
     queryProject(state, action) {
       return {
         ...state,
         project: action.payload,
       };
     },
-    appendList(state, action) {
+    saveStepFormData(state, action) {//保存表单信息
+      console.log(action)
       return {
         ...state,
-        list: (state as StateType).list.concat(action.payload),
+        project: action.payload,
+        submit: action.response,
       };
     },
-    queryRejectedList(state, action) {
-      return {
-        ...state,
-        rejectedList: action.payload,
-      };
-    },
-    appendRejectedList(state, action) {
-      return {
-        ...state,
-        rejectedList: (state as StateType).rejectedList.concat(action.payload),
-      };
-    },
+    // appendList(state, action) {
+    //   return {
+    //     ...state,
+    //     list: (state as StateType).list.concat(action.payload),
+    //   };
+    // },
+    // queryRejectedList(state, action) {
+    //   return {
+    //     ...state,
+    //     rejectedList: action.payload,
+    //   };
+    // },
+    // appendRejectedList(state, action) {
+    //   return {
+    //     ...state,
+    //     rejectedList: (state as StateType).rejectedList.concat(action.payload),
+    //   };
+    // },
   },
 };
 

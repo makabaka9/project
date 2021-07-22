@@ -4,7 +4,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import BasicOrderInfo from '@/components/BasicOrderInfo';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import { CurrentUser } from '@/models/user';
 import { StateType } from './model';
 import { ListItemDataType } from './data.d';
@@ -118,7 +118,7 @@ const TaskAssign: FC<TaskAssignProps> = ({
                         itemKey={item.orderID}
                         userList={user}
                         onSubmit={clickAssign}
-                        // isAssigned={!(typeof item.taskAssign === 'undefined')}
+                      // isAssigned={!(typeof item.taskAssign === 'undefined')}
                       />
                     </div>,
                   ]}
@@ -185,7 +185,7 @@ const TaskAssign: FC<TaskAssignProps> = ({
                         key="1"
                         header={<div style={{ color: '#1890ff' }}>检测委托单详情</div>}
                       >
-                        <DetailPhysicalChemical data={item} />
+                        <DetailProject data={item} />
                       </Panel>
                     </Collapse>
                   </div>

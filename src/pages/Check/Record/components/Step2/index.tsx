@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Alert, Button, Descriptions, Divider, Tag, Modal } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { ListItemDataType } from '@/components/DetailPhysicalChemical/data';
+import { ListItemDataType } from '@/components/DetailProject/data';
 import { CurrentUser } from '@/models/user';
 import moment from 'moment';
 import SignaturePad from '@/components/SignaturePad';
@@ -98,7 +98,7 @@ const Step2: React.FC<Step2Props> = props => {
       form={form}
       layout="horizontal"
       className={styles.stepForm}
-      // initialValues={{ password: '123456' }}
+    // initialValues={{ password: '123456' }}
     >
       <Alert closable showIcon message="确认提交后， 将无法撤回。" style={{ marginBottom: 24 }} />
 
@@ -147,8 +147,8 @@ const Step2: React.FC<Step2Props> = props => {
       >
         <Form.Item
           name="testSignature"
-          // rules={[{ required: true, message: '请提供签名' }]}
-          // value={signatureData}
+        // rules={[{ required: true, message: '请提供签名' }]}
+        // value={signatureData}
         >
           <SignaturePad />
         </Form.Item>

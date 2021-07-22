@@ -8,7 +8,9 @@
 export default {
   dev: {
     '/api/': {
-      target: 'http://localhost:9000',
+      //target: 'http://10.24.1.190:9000',
+      //target: 'http://192.168.1.28:9000',
+      target: 'http://10.24.1.175:9001',
       changeOrigin: true,
       pathRewrite: { '^': '' }
     },

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Button, Divider, Card, Descriptions, Typography, Tag } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import { ListItemDataType } from '@/components/DetailPhysicalChemical/data';
+import { ListItemDataType } from '@/components/DetailProject/data';
 import { CurrentUser } from '@/models/user';
 import moment from 'moment';
 import { StateType } from '../../model';
@@ -27,11 +27,11 @@ interface Step1Props {
   username?: string;
   usercode?: string;
   selectedOrder: ListItemDataType;
-  isRevised:boolean;
+  isRevised: boolean;
 }
 
 const Step1: React.FC<Step1Props> = props => {
-  const { dispatch, data, rejectedList, username, usercode, selectedOrder,isRevised } = props;
+  const { dispatch, data, rejectedList, username, usercode, selectedOrder, isRevised } = props;
   const [form] = Form.useForm();
   let formData = {};
   const tempData = rejectedList.filter(i => i.orderID === selectedOrder.orderID)[0]
@@ -55,8 +55,8 @@ const Step1: React.FC<Step1Props> = props => {
   };
   const nextStep = async () => {
     const values = await validateFields();
-    values.isRevised=isRevised;
-    console.log("修订状态",values)
+    values.isRevised = isRevised;
+    console.log("修订状态", values)
     if (dispatch) {
       dispatch({
         type: 'checkAndRecord/saveStepFormData',

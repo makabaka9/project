@@ -5,7 +5,7 @@ import ProTable, { ProColumns, ActionType } from '@ant-design/pro-table';
 import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 import { TableListItem } from './data.d';
-import { queryUser, updateUser, addUser, removeUser } from './service';
+import { queryUser, updateUser, addUser, removeUser, queryProject } from '.././service';
 import { Link } from 'dva/router';
 import Record from '../Check/Record';
 
@@ -85,8 +85,12 @@ const getInput = (record: TableListItem) => {
   else if (record.projectProgress === "同意立项") {
     //加上参数
     return <>{record.projectProgress}-< Link to={`/OrderSubmit/ContractSign/${record.projectID}`} > 合同签署</Link ></>
-  } else if (record.projectProgress === "项目执行") {
+  }
+  else if (record.projectProgress === "项目执行") {
     return <>{record.projectProgress}-< Link to={`/OrderSubmit/ContractSign/Execute/${record.projectID}`} > 成果填报</Link ></>
+  }
+  else if (record.projectProgress === "项目结题") {
+    return <>{record.projectProgress}-< Link to={`/OrderSubmit/ContractSign/Execute/Completion/${record.projectID}`} > 项目结题</Link ></>
   }
   else return "";
 }
@@ -274,7 +278,7 @@ const TableList: React.FC<{}> = () => {
         //     </span>
         //   </div>
         // )}
-        request={params => queryUser(params)}//请求数据
+        request={params => queryProject(params)}//请求数据
         columns={columns}
       //rowSelection={{}}//联动的选择框。可以通过 rowSelection.type 属性指定选择类型，默认为 checkbox
 

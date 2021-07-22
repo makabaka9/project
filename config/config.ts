@@ -26,7 +26,7 @@ export default defineConfig({
     antd: true,
     baseNavigator: true,
   },
-  dynamicImport: {
+  dynamicImport: {//按需加载
     loading: '@/components/PageLoading/index',
   },
   targets: {
@@ -43,14 +43,57 @@ export default defineConfig({
           path: '/user/login',
           component: './user/login',
         },
+
       ],
+    },
+    { //name: "项目申请",
+      path: 'OrderSubmit',
+      component: './Submit/OrderSubmit',
+      // routes: [{
+      //   path: 'OrderSubmit/ContractSign',
+      //   component: './Submit/OrderList',
+      // },
+      // ],
+    },
+    {
+      //name: "合同签署",
+      path: 'OrderSubmit/ContractSign/:id',
+      component: './Project/ContractSign',
+    },
+    {
+      //name: "项目执行",
+      path: 'OrderSubmit/ContractSign/Execute/:id',
+      component: './Project/Execute',
+    },
+    {
+      //name: "项目结题",
+      path: 'OrderSubmit/ContractSign/Execute/Completion/:id',
+      component: './Project/Completion',
     },
     {
       name: '项目',
       icon: 'EditOutlined',
       path: 'ProjectHome',
-      component:'./Project/ProjectHome'
+      component: './Project/ProjectHome',
+      // routes: [
+      //   {
+      //     path: 'OrderSubmit',
+      //     //name: '项目申请',
+      //     //layout: false,
+      //     // authority: ['0', '5', '6'],
+      //     component: './Submit/OrderSubmit', // authority: ['admin'],
+      //   },
+      //   {
+      //     path: 'TaskAssign',
+      //     name: '任务分配',
+      //     //authority: ['0', '5'],
+      //     // icon: 'smile',
+      //     component: './Check/TaskAssign', // authority: ['admin'],
+      //   },
+
+      // ],
     },
+
     {
       name: '检测管理',
       icon: 'CheckSquareOutlined',
@@ -106,7 +149,7 @@ export default defineConfig({
     },
     {
       name: '工艺研发',
-      
+
       path: '/Submit',
       // authority: ['0', '1'],
       routes: [
@@ -137,153 +180,153 @@ export default defineConfig({
     },
     {
       path: '/',
-      redirect: '/Monitor/Global1',
+      redirect: '/ProjectHome',
     }, // ******南宁5菜单*******
-    {
-      menu: {
-        name: '运行监控',
-      },
-      icon: 'LaptopOutlined',
-      path: '/Monitor',
-      routes: [
-        {
-          menu: {
-            name: '线路监控',
-          },
-          path: 'Global1',
-          component: './Monitor/Global1',
-        },
-        // {
-        //   menu: {
-        //     name: '线路监控1',
-        //   },
-        //   path: 'Global2',
-        //   component: './Monitor/Global2',
-        // },
-        // {
-        //   menu: {
-        //     name: '全局监控',
-        //   },
-        //   path: 'Global',
-        //   component: './Monitor/Global',
-        // },
-        {
-          menu: {
-            name: '状态预览',
-          },
-          path: 'State',
-          component: './Monitor/State',
-        },
-        {
-          menu: {
-            name: '车辆监控',
-          },
-          path: 'Trains/:id',
-          component: './Monitor/Trains',
-        },
-        {
-          menu: {
-            name: 'HMI同屏',
-          },
-          path: 'Trains1/:id',
-          component: './Monitor/Trains1',
-        },
-        {
-          menu: {
-            name: '故障监控',
-          },
-          path: 'Fault',
-          component: './Monitor/Fault',
-        },
-        // {
-        //   menu: {
-        //     name: '数据回放',
-        //   },
-        //   path: 'Data/:id',
-        //   component: './Monitor/Data',
-        // },
+    // {
+    //   menu: {
+    //     name: '运行监控',
+    //   },
+    //   icon: 'LaptopOutlined',
+    //   path: '/Monitor',
+    //   routes: [
+    //     {
+    //       menu: {
+    //         name: '线路监控',
+    //       },
+    //       path: 'Global1',
+    //       component: './Monitor/Global1',
+    //     },
+    //     // {
+    //     //   menu: {
+    //     //     name: '线路监控1',
+    //     //   },
+    //     //   path: 'Global2',
+    //     //   component: './Monitor/Global2',
+    //     // },
+    //     // {
+    //     //   menu: {
+    //     //     name: '全局监控',
+    //     //   },
+    //     //   path: 'Global',
+    //     //   component: './Monitor/Global',
+    //     // },
+    //     {
+    //       menu: {
+    //         name: '状态预览',
+    //       },
+    //       path: 'State',
+    //       component: './Monitor/State',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '车辆监控',
+    //       },
+    //       path: 'Trains/:id',
+    //       component: './Monitor/Trains',
+    //     },
+    //     {
+    //       menu: {
+    //         name: 'HMI同屏',
+    //       },
+    //       path: 'Trains1/:id',
+    //       component: './Monitor/Trains1',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '故障监控',
+    //       },
+    //       path: 'Fault',
+    //       component: './Monitor/Fault',
+    //     },
+    //     // {
+    //     //   menu: {
+    //     //     name: '数据回放',
+    //     //   },
+    //     //   path: 'Data/:id',
+    //     //   component: './Monitor/Data',
+    //     // },
 
-        // {
-        //   menu: {
-        //     name: '通讯状态',
-        //   },
-        //   path: 'Signal',
-        //   component: './Monitor/Signal',
-        // },
-      ],
-    },
-    {
-      menu: {
-        name: '子系统',
-      },
-      icon: 'ApartmentOutlined',
-      path: '/Subsystem',
-      routes: [
-        {
-          menu: {
-            name: '空调',
-          },
-          path: 'AirConditioner/:id',
-          component: './Subsystem/AirConditioner',
-        },
-        {
-          menu: {
-            name: '牵引',
-          },
-          path: 'Traction/:id',
-          component: './Subsystem/Traction',
-        },
-        {
-          menu: {
-            name: '辅助',
-          },
-          path: 'Assistance/:id',
-          component: './Subsystem/Assistance',
-        },
-        {
-          menu: {
-            name: '制动',
-          },
-          path: 'Brake/:id',
-          component: './Subsystem/Brake',
-        },
-        {
-          menu: {
-            name: '车门',
-          },
-          path: 'Door/:id',
-          component: './Subsystem/Door',
-        },
-        {
-          menu: {
-            name: '烟火',
-          },
-          path: 'Pyrotechnic/:id',
-          component: './Subsystem/Pyrotechnic',
-        },
-        {
-          menu: {
-            name: 'PIS',
-          },
-          path: 'PIS/:id',
-          component: './Subsystem/PIS',
-        },
-        {
-          menu: {
-            name: '弓网',
-          },
-          path: 'Pantograph/:id',
-          component: './Subsystem/Pantograph2',
-        },
-        {
-          menu: {
-            name: '走行部',
-          },
-          path: 'Running/',
-          component: './Subsystem/Running2',
-        },
-      ],
-    },
+    //     // {
+    //     //   menu: {
+    //     //     name: '通讯状态',
+    //     //   },
+    //     //   path: 'Signal',
+    //     //   component: './Monitor/Signal',
+    //     // },
+    //   ],
+    // },
+    // {
+    //   menu: {
+    //     name: '子系统',
+    //   },
+    //   icon: 'ApartmentOutlined',
+    //   path: '/Subsystem',
+    //   routes: [
+    //     {
+    //       menu: {
+    //         name: '空调',
+    //       },
+    //       path: 'AirConditioner/:id',
+    //       component: './Subsystem/AirConditioner',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '牵引',
+    //       },
+    //       path: 'Traction/:id',
+    //       component: './Subsystem/Traction',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '辅助',
+    //       },
+    //       path: 'Assistance/:id',
+    //       component: './Subsystem/Assistance',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '制动',
+    //       },
+    //       path: 'Brake/:id',
+    //       component: './Subsystem/Brake',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '车门',
+    //       },
+    //       path: 'Door/:id',
+    //       component: './Subsystem/Door',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '烟火',
+    //       },
+    //       path: 'Pyrotechnic/:id',
+    //       component: './Subsystem/Pyrotechnic',
+    //     },
+    //     {
+    //       menu: {
+    //         name: 'PIS',
+    //       },
+    //       path: 'PIS/:id',
+    //       component: './Subsystem/PIS',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '弓网',
+    //       },
+    //       path: 'Pantograph/:id',
+    //       component: './Subsystem/Pantograph2',
+    //     },
+    //     {
+    //       menu: {
+    //         name: '走行部',
+    //       },
+    //       path: 'Running/',
+    //       component: './Subsystem/Running2',
+    //     },
+    //   ],
+    // },
     // {
     //   menu: {
     //     name: '故障管理',

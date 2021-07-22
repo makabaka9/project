@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { CurrentUser } from '@/models/user';
 import BasicOrderInfo from '@/components/BasicOrderInfo';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import { StateType } from './model';
 import { ListItemDataType } from './data.d';
 import styles from './style.less';
@@ -83,7 +83,7 @@ const Approve: FC<ApproveProps> = ({
               <div className={styles.listItemContent}>
                 <Collapse>
                   <Panel key="1" header={<div style={{ color: '#1890ff' }}>检测委托单详情</div>}>
-                    <DetailPhysicalChemical data={item} />
+                    <DetailProject data={item} />
                   </Panel>
                 </Collapse>
               </div>

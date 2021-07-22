@@ -1,45 +1,40 @@
-import { ConsoleSqlOutlined, UploadOutlined, PlusOutlined }from '@ant-design/icons';
+import { ConsoleSqlOutlined, UploadOutlined, PlusOutlined } from '@ant-design/icons';
 import {
   Card,
   Col,
-  DatePicker,
-  Checkbox,
   Form,
   Input,
   Row,
   Select,
-  InputNumber,
-  Divider,
   Radio,
   Upload,
   Button,
   message,
 } from 'antd';
-import { text } from 'express';
 import React, { useState } from 'react';
 import styles from './style.less';
 
 const { Option } = Select;
 
 const fieldLabels = {
-  projectID:'项目编号',
-  projectManager:'项目负责人', 
-  projectCompany:'单位',
-  projectName:'项目名称',
-  projectCategory:'项目类别',
-  projectStartTime:'项目开始时间',
-  projectEndTime:'项目结束时间',
-  projectBudget:'项目经费预算',
-  projectOutsource:'是否委外',
-  projectIntroduction:'项目简介',
-  projectResearchContent:'研究内容',
+  projectID: '项目编号',
+  projectManager: '项目负责人',
+  projectCompany: '单位',
+  projectName: '项目名称',
+  projectCategory: '项目类别',
+  projectStartTime: '项目开始时间',
+  projectEndTime: '项目结束时间',
+  projectBudget: '项目经费预算',
+  projectOutsource: '是否委外',
+  projectIntroduction: '项目简介',
+  projectResearchContent: '研究内容',
 };
 
 function FillProjectApply() {//项目申报表单
   // const testItemsOptions = [
   //   { label: '工艺部', value: '工艺部' },
   //   { label: '转向架事业部', value: '转向架事业部' },
-  
+
   // ];
   const { TextArea } = Input;
   const [createModalVisible, handleModalVisible] = useState<boolean>(false);
@@ -160,11 +155,11 @@ function FillProjectApply() {//项目申报表单
           </Col>
           <Col xl={{ span: 8 }} lg={{ span: 8 }} md={{ span: 12 }} sm={24}>
             <Form.Item label={fieldLabels.projectOutsource} name="projectOutsource"
-             rules={[{ required: true, message: '请选择' }]}
+              rules={[{ required: true, message: '请选择' }]}
             >
               <Radio.Group>
-                <Radio value="0">是</Radio>
-                <Radio value="1">否</Radio>
+                <Radio value="是">是</Radio>
+                <Radio value="否">否</Radio>
               </Radio.Group>
             </Form.Item>
           </Col>
@@ -176,7 +171,7 @@ function FillProjectApply() {//项目申报表单
               name="projectIntroduction"
               rules={[{ required: true, message: '请输入项目简介' }]}
             >
-              <TextArea placeholder="(字数300字以内)" rows={4} showCount maxLength={300} className={styles.context}/>
+              <TextArea placeholder="(字数300字以内)" rows={4} showCount maxLength={300} className={styles.context} />
             </Form.Item>
           </Col>
         </Row>
@@ -187,7 +182,7 @@ function FillProjectApply() {//项目申报表单
               name="projectResearchContent"
               rules={[{ required: true, message: '请输入研究内容' }]}
             >
-              <TextArea placeholder="(字数500字以内)" rows={6} showCount maxLength={500} className={styles.context}/>
+              <TextArea placeholder="(字数500字以内)" rows={6} showCount maxLength={500} className={styles.context} />
             </Form.Item>
           </Col>
         </Row>
@@ -198,12 +193,12 @@ function FillProjectApply() {//项目申报表单
                 上传文件
               </Button>
             </Upload>
-            
-            
+
+
           </Col>
         </Row>
       </Card>
-      
+
     </div>
   );
 }

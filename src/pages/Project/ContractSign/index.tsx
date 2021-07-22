@@ -4,7 +4,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import DetailProject from '@/components/DetailProject';
 import { CurrentUser } from '@/models/user';
-import { StateType } from './model';
+import { StateType } from '.././model';
 import { ProjectItemDataType } from '../data.d';
 import Nav from '@/pages/Project/components/Bread';
 import { UploadOutlined } from '@ant-design/icons';
@@ -16,7 +16,7 @@ interface OrderProps {
     params: any;
   };
   dispatch: Dispatch<any>;
-  submitAndOrderList: StateType;
+  Project: StateType;
   usercode: string;
   projectID: string;
   project: ProjectItemDataType;
@@ -38,16 +38,16 @@ const props = {
     }
   },
 };
-const OrderList: React.FC<OrderProps> = (props) => {
+const ContractSign: React.FC<OrderProps> = (props) => {
   const {
     match,
     dispatch,
-    submitAndOrderList: { project },
+    Project: { project },
   } = props;
   // const [ID, setProjectID] = useState(match.params.id === ":id" ? project : match.params.id);
   useEffect(() => {
     dispatch({
-      type: 'submitAndOrderList/fetchById',
+      type: 'Project/fetchById',
       payload: {
         projectID: match.params.id,
       },
@@ -120,19 +120,19 @@ const OrderList: React.FC<OrderProps> = (props) => {
 };
 export default connect(
   ({
-    submitAndOrderList,
+    Project,
     loading,
     user,
     projectID,
   }: {
-    submitAndOrderList: StateType;
+    Project: StateType;
     loading: { models: { [key: string]: boolean } };
     user: { currentUser: CurrentUser };
     projectID: string;
   }) => ({
-    submitAndOrderList,
-    loading: loading.models.submitAndOrderList,
+    Project,
+    loading: loading.models.Project,
     usercode: user.currentUser.usercode,
-    projectID: submitAndOrderList.projectID,
+    projectID: Project.projectID,
   }),
-)(OrderList);
+)(ContractSign);

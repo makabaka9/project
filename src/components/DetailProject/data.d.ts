@@ -4,8 +4,7 @@ export interface TestItems {
   metallographyTest: string;
 }
 
-export interface ProjectItemDataType {
-  // _id: string;
+export interface ListItemDataType {
   projectID: string,
   projectManager: string,
   projectCompany: string,
@@ -17,14 +16,9 @@ export interface ProjectItemDataType {
   projectOutsource: string,
   projectIntroduction: string,
   projectResearchContent: string,
-  projectProgress: string,
-  projectFunds: string,
-  abnormalInstruction: string
+  projectProgress: string
 
-  // assignRejectReason: string;
-  // id: string | number | undefined;
   // physicalChemicalType: string;
-  // _id: string;
   // orderID: string;
   // clientCompany: string;
   // clientDate: string;
@@ -58,39 +52,6 @@ export interface ProjectItemDataType {
   // gapsQuantity: string;
   // testItems: Array<string>;
 
-  // usercode: string;
-  // username: string;
-  // taskAssignTime: number;
-  // submitTime: number;
-  // processTime: number;
-  // processFinishTime: number;
-  // testAssignTime: number;
-  // flowStep: number | undefined;
-}
-
-export interface CalibrationItemDataType {
-  _id: string;
-  orderID: string;
-  calibrationTestType: string;
-  clientCompany: string;
-  clientDate: string;
-  clientAgent: string;
-  clientPhone: string;
-  clientAddress: string;
-  sampleName: string;
-  sampleMaterial: string;
-  sampleModel: string;
-  sampleNumber: string;
-  sampleQuantity: string;
-  completeTime: string;
-  usercode: string;
-  username: string;
-  attachment: string;
-  visualInspection: string;
-  calibrationHours: string;
-  calibrationCost: string;
-  repairCost: string;
-  clientRequire: string;
-  submitTime: number;
-  flowStep: number | undefined;
+  // testMonitorAssign: string;
+  // processMonitorAssign: string;
 }

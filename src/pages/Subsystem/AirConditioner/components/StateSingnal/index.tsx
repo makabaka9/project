@@ -6,7 +6,7 @@ import stateGreenIcon from '@/assets/stateGreen.svg';
 import stateGrayIcon from '@/assets/stateGray.svg';
 import stateRedIcon from '@/assets/stateRed.svg';
 import styles from '../../style.less';
-import autoHeight from '@/pages/Monitor/Global/components/autoHeight';
+//import autoHeight from '@/pages/Monitor/Global/components/autoHeight';
 // import { BrakeOperationStatusMonitoringDataType } from '../../data';
 
 export interface StateSingnalProps {
@@ -67,4 +67,4 @@ const StateSingnal: React.FC<StateSingnalProps> = (props) => {
   );
 };
 
-export default autoHeight()(StateSingnal);
+//export default autoHeight()(StateSingnal);

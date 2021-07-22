@@ -1,9 +1,10 @@
 // import request from '@/utils/request';
 import { request } from 'umi';
-import { ListItemDataType, CalibrationItemDataType } from './data.d';
+import { ProjectItemDataType, CalibrationItemDataType } from './data.d';
 
 export async function SubmitForm(params: any) {
-  return request('/api/forms', {
+  console.log(params)
+  return request('/api/projects/add', {//提交项目申请表单
     method: 'POST',
     data: params,
   });
@@ -24,13 +25,20 @@ export async function CurrentUser(): Promise<any> {
     // data: params,
   });
 }
-export async function queryOrderList(params: ListItemDataType) {
+export async function queryOrderList(params: ProjectItemDataType) {
   return request('/api/submitForms', {
     method: 'GET',
     params,
   });
 }
-export async function queryRejectedOrderList(params: ListItemDataType) {
+export async function queryProject(params: ProjectItemDataType) {
+  console.log(params);
+  return request(`/api/projects/${params.projectID}`, {
+    method: 'GET',
+    //params,
+  });
+}
+export async function queryRejectedOrderList(params: ProjectItemDataType) {
   return request('/api/submitRejectedForms', {
     method: 'GET',
     params,

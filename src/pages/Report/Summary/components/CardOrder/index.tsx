@@ -2,7 +2,7 @@ import { AuditOutlined, PrinterTwoTone } from '@ant-design/icons';
 import { Typography, Row, Popover, Button } from 'antd';
 import React, { useRef } from 'react';
 import moment from 'moment';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import Metallography from '@/pages/Report/components/Metallography';
 import Mechanics from '@/pages/Report/components/Mechanics';
 import ReactToPrint from 'react-to-print';
@@ -30,7 +30,7 @@ const CardOrder = (props: { data: ListItemDataType }) => {
             trigger="focus"
             content={
               <div>
-                <DetailPhysicalChemical data={data} />
+                <DetailProject data={data} />
               </div>
             }
           >

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Alert, Button } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import { StateType } from '../../model';
 // import { CurrentUser } from '@/models/user';
 import styles from './index.less';
@@ -63,7 +63,7 @@ const Step2: React.FC<Step2Props> = props => {
   };
 
   const onValidateForm = async () => {
-    // data(orderID)
+    // data(projectID)
     const projectID = getNowFormatDate() + Math.floor(Math.random() * 10000);
     data.projectID = projectID;
     const values = await validateFields();
@@ -82,11 +82,11 @@ const Step2: React.FC<Step2Props> = props => {
     <Form
       form={form}
       layout="horizontal"
-      // className={styles.centerButton}
+    // className={styles.centerButton}
     >
       <Alert closable showIcon message="确认提交后，将无法撤回。" style={{ marginBottom: 24 }} />
       <div>
-        <DetailPhysicalChemical data={data} />
+        <DetailProject data={data} />
       </div>
       <div className={styles.centerButton}>
         <Button type="primary" onClick={onValidateForm} loading={submitting}>

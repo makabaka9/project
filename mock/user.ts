@@ -84,6 +84,30 @@ export default {
       phone: '0752-268888888',
     });
   },
+  // 'POST /api/projects/query': [
+  //   {
+  //     data: [
+  //       {
+  //         projectID: "123",
+  //         projectManager: "123",
+  //         projectCompany: "123",
+  //         projectName: "123",
+  //         projectCategory: "123",
+  //         projectStartTime: "123",
+  //         projectEndTime: "123",
+  //         projectBudget: "123",
+  //         projectOutsource: "123",
+  //         projectIntroduction: "123",
+  //         projectResearchContent: "123",
+  //       }
+  //     ],
+  //     total: 58,
+  //     success: true,
+  //     pageSize: 10,
+  //     currentPage: 1,
+  //   },
+
+  // ],
   // GET POST 可省略
   'GET /api/users': [
     {

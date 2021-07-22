@@ -9,7 +9,7 @@ import OrderWorkFlowStep from '@/components/OrderWorkFlowStep';
 import { CurrentUser } from '@/models/user';
 import { StateType } from '../../model';
 import FillProjectApply from '@/pages/Submit/OrderSubmit/components/FillProjectApply';
-import { ProjectItemDataType } from '../../../data.d';
+import { ProjectItemDataType } from '../../data.d';
 import styles from '../../style.less';
 
 const { Panel } = Collapse;

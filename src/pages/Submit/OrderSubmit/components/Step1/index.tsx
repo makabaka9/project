@@ -1,15 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Divider, message } from 'antd';
+import { Form, Button, Divider } from 'antd';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import { StateType } from '../../model';
 import FillProjectApply from '../FillProjectApply';
 import styles from './index.less';
-import { PlusOutlined } from '@ant-design/icons';
-import CreateForm from '@/pages/File/components/CreateForm';
-import { TableListItem } from '@/pages/File/data';
-import { addRule } from '@/pages/File/service';
-import { ActionType } from '@ant-design/pro-table';
 
 const formItemLayout = {
   labelCol: {
@@ -57,7 +52,7 @@ const Step1: React.FC<Step1Props> = props => {
         {...formItemLayout}
         form={form}
         layout="horizontal"
-        hideRequiredMark
+        //hideRequiredMark
         initialValues={data}
       >
         <FillProjectApply />

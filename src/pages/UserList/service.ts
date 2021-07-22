@@ -2,8 +2,8 @@
 import { request } from 'umi';
 import { TableListParams } from './data.d';
 
-export async function queryUser(params?: TableListParams) {
-  return request('/api/users/query', {
+export async function queryUser(params?: TableListParams) {//获取所有项目
+  return request('/api/projects', {
     method: 'POST',
     data: params,
   });

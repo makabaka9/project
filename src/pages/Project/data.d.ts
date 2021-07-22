@@ -5,18 +5,21 @@ export interface TestItems {
 }
 
 export interface ProjectItemDataType {
-  projectID:string,
-  projectManager:string, 
-  projectCompany:string,
-  projectName:string,
-  projectCategory:string,
-  projectStartTime:string,
-  projectEndTime:string,
-  projectBudget:string,
-  projectOutsource:string,
-  projectIntroduction:string,
-  projectResearchContent:string,
-
+  // _id: string;
+  projectID: string,
+  projectManager: string,
+  projectCompany: string,
+  projectName: string,
+  projectCategory: string,
+  projectStartTime: string,
+  projectEndTime: string,
+  projectBudget: string,
+  projectOutsource: string,
+  projectIntroduction: string,
+  projectResearchContent: string,
+  projectProgress: string,
+  projectFunds: string,
+  abnormalInstruction: string
   // assignRejectReason: string;
   // id: string | number | undefined;
   // physicalChemicalType: string;

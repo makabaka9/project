@@ -4,7 +4,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Dispatch } from 'redux';
 import { connect } from 'dva';
 import BasicOrderInfo from '@/components/BasicOrderInfo';
-import DetailPhysicalChemical from '@/components/DetailPhysicalChemical';
+import DetailProject from '@/components/DetailProject';
 import { CurrentUser } from '@/models/user';
 import { StateType } from '../../model';
 import { ListItemDataType } from '../../data.d';
@@ -97,12 +97,12 @@ const Step0: React.FC<Step0Props> = props => {
                     id={item.orderID}
                     onClick={(event: React.MouseEvent) => clickHandle(event, item)}
                     type="primary"
-                    // disabled={true}
-                    // disabled={
-                    //   typeof item.rawTestData.filter(
-                    //     tempItem => tempItem.testUsercode === currentUser?.usercode,
-                    //   )[0].testTime !== 'undefined'
-                    // }
+                  // disabled={true}
+                  // disabled={
+                  //   typeof item.rawTestData.filter(
+                  //     tempItem => tempItem.testUsercode === currentUser?.usercode,
+                  //   )[0].testTime !== 'undefined'
+                  // }
                   >
                     填写检测单
                   </Button>
@@ -164,7 +164,7 @@ const Step0: React.FC<Step0Props> = props => {
                 </Row>
                 <Collapse>
                   <Panel key="1" header={<div style={{ color: '#1890ff' }}>检测委托单详情</div>}>
-                    <DetailPhysicalChemical data={item} />
+                    <DetailProject data={item} />
                   </Panel>
                 </Collapse>
               </div>
